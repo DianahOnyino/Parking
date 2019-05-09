@@ -11,12 +11,16 @@ namespace App\Http\Controllers;
 
 use App\ParkingSpot;
 use App\Vehicle;
+use http\Env\Request;
+use Illuminate\Support\Facades\Input;
 
 class ParkingController extends Controller
 {
     public function index()
     {
-        return view('parking.display');
+        $parkingLotStartNo = ParkingSpot::where('occupied', 0)->orderBY('number', 'ASC')->first()->number;
+
+        return view('parking.display', compact('parkingLotStartNo', $parkingLotStartNo));
     }
 
     public function getAllAvailableParkingSpots()
@@ -61,5 +65,40 @@ class ParkingController extends Controller
     public function getAvailableParkingSpotWithLowestNumber()
     {
         return ParkingSpot::where('occupied', 0)->orderBY('number', 'ASC')->first();
+    }
+
+    public function park($parkingLotStartNo)
+    {
+        $input = Input::all();
+
+        $vehicle_type_slug = Vehicle::where('type', $input['vehicle_type'])->first()->slug;
+        $current_parking_slot = ParkingSpot::where('number', $parkingLotStartNo)->first();
+
+        if ($vehicle_type_slug == 'car') {
+            $current_parking_slot->occupied = 1;
+            $current_parking_slot->save();
+        } elseif($vehicle_type_slug == 'motorbike') {
+            //TODO: Check if there are existing motorcycles and park under the space if the motorcycles are not yet 5
+            $current_parking_slot->occupied = 1;
+            $current_parking_slot->save();
+        } elseif ($vehicle_type_slug == 'bus') {
+            $current_parking_slot = ParkingSpot::where('number', '>=', $parkingLotStartNo)->orderBY('number', 'ASC')
+                                               ->take(3)->get();
+
+            $current_parking_slot->each(function ($parking_slot) {
+                $parking_slot->occupied = 1;
+                $parking_slot->save();
+            });
+        } else {
+            $current_parking_slot = ParkingSpot::where('number', '>=', $parkingLotStartNo)->orderBY('number', 'ASC')
+                                               ->take(5)->get();
+
+            $current_parking_slot->each(function ($parking_slot) {
+                $parking_slot->occupied = 1;
+                $parking_slot->save();
+            });
+        }
+
+        return redirect()->with('success', 'Vehicle successfully parked!');
     }
 }

@@ -25,3 +25,6 @@ Route::get('/next-available-parking-spot/{vehicle_type}', 'ParkingController@get
 
 Route::get('/available-parking-spot-with-lowest-number', 'ParkingController@getAvailableParkingSpotWithLowestNumber')
      ->name('available-parking-spot-with-lowest-number');
+
+Route::get('/park/{parkingLotStartNo}', 'ParkingController@park')
+     ->name('park');

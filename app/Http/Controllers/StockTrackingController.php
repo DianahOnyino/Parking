@@ -26,6 +26,7 @@ class StockTrackingController extends Controller
     {
         $supermarket_item = SupermarketItem::where('item_id', $itemId)->where('supermarket_id', $supermarketId)
                                                                       ->first();
+
         if (!$supermarket_item) {
             return [
                 'error_message' => 'No record found!'
@@ -42,9 +43,10 @@ class StockTrackingController extends Controller
             ];
         }
 
-        $supermarket_item->quantity = $supermarket_item_quantity - $requested_quantity;
-        $supermarket_item_quantity->sold_out_quantity = $requested_quantity;
-        $supermarket_item_quantity->save();
+        SupermarketItem::where('item_id', $itemId)->where('supermarket_id', $supermarketId)
+                                                           ->decrement('quantity', $requested_quantity);
+
+        $supermarket_item->save();
 
         $sold_out_item = new SoldOutItem();
 

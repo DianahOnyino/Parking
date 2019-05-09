@@ -47,4 +47,14 @@ class StockTrackingController extends Controller
             'success_message' => 'Successfully sold out the requested item quantity!'
         ];
     }
+
+    public function checkBalance($itemId, $supermarketId)
+    {
+        $supermarket_item = SupermarketItem::where('item_id', $itemId)->where('supermarket_id', $supermarketId)
+                                           ->first();
+
+        return [
+            "supermarket_item_balance" => $supermarket_item->quantity
+        ];
+    }
 }

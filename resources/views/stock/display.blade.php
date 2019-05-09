@@ -6,6 +6,7 @@
             <div class="cell large-12 medium-12 small-12">
                 <div class="card">
                     <div class="card-header">
+                        Stock Items
                     </div>
 
                     <div class="card-body">

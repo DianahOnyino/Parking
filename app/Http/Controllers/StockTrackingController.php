@@ -9,7 +9,7 @@
 namespace App\Http\Controllers;
 
 
-class StockTrackingController
+class StockTrackingController extends Controller
 {
     public function index()
     {

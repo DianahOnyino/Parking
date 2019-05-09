@@ -18,3 +18,5 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'ParkingController@index')->name('home');
+
+Route::get('/stock-tracking', 'StockTrackingController@index')->name('stock-tracking');

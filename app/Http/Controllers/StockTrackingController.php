@@ -25,7 +25,7 @@ class StockTrackingController extends Controller
     public function sellItem($itemId, $supermarketId, $quantity)
     {
         $supermarket_item = SupermarketItem::where('item_id', $itemId)->where('supermarket_id', $supermarketId)
-                                                                      ->first();
+                                           ->first();
 
         if (!$supermarket_item) {
             return [
@@ -44,7 +44,7 @@ class StockTrackingController extends Controller
         }
 
         SupermarketItem::where('item_id', $itemId)->where('supermarket_id', $supermarketId)
-                                                           ->decrement('quantity', $requested_quantity);
+                       ->decrement('quantity', $requested_quantity);
 
         $supermarket_item->save();
 
@@ -66,6 +66,12 @@ class StockTrackingController extends Controller
         $supermarket_item = SupermarketItem::where('item_id', $itemId)->where('supermarket_id', $supermarketId)
                                            ->first();
 
+        if (!$supermarket_item) {
+            return [
+                'error_message' => "No record found!"
+            ];
+        }
+
         return [
             "supermarket_item_balance" => $supermarket_item->quantity
         ];
@@ -75,10 +81,16 @@ class StockTrackingController extends Controller
     {
         $sold_out_item = SoldOutItem::find($soldOutItemId);
 
-        if ($sold_out_item) {
-            $supermarket_item = SupermarketItem::where('supermarket_id', $sold_out_item->supermarket_id)
-                                               ->where('item_id', $sold_out_item->item_id)->first();
+        if (!$sold_out_item) {
+            return [
+                'error_message' => "No record found!"
+            ];
+        }
 
+        $supermarket_item = SupermarketItem::where('supermarket_id', $sold_out_item->supermarket_id)
+                                           ->where('item_id', $sold_out_item->item_id)->first();
+
+        if ($supermarket_item) {
             $supermarket_item->quantity = $sold_out_item->quantity + $supermarket_item->quantity;
 
             $supermarket_item->save();

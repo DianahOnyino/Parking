@@ -35,6 +35,8 @@ Route::get('/unpark/{parking_number}', 'ParkingController@unpark')->name('unpark
 //Stock tracking routes
 Route::get('/sell-item/{item_id}/{supermarket_id}/{quantity}', 'StockTrackingController@sellItem')->name('sell-item');
 
-Route::get('/check-item-balance/{item_id}/{supermarket_id}', 'StockTrackingController@checkBalance')->name('sell-item');
+Route::get('/check-item-balance/{item_id}/{supermarket_id}', 'StockTrackingController@checkBalance')
+    ->name('check-item-balance');
 
-//Route::get('/sell-item/{item_id}/{supermarket_id}/{quantity}', 'StockTrackingController@sellItem')->name('sell-item');
+Route::get('/return-sold-out-item/{sold_out_item_id}', 'StockTrackingController@returnItem')
+    ->name('return-sold-out-item');

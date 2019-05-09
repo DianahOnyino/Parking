@@ -29,5 +29,4 @@ Route::get('/available-parking-spot-with-lowest-number', 'ParkingController@getA
 Route::get('/park/{parkingLotStartNo}', 'ParkingController@park')
      ->name('park');
 
-Route::get('/unpark/{parking_number}', 'ParkingController@unpark')
-     ->name('unpark');
+Route::get('/unpark/{parking_number}', 'ParkingController@unpark')->name('unpark');

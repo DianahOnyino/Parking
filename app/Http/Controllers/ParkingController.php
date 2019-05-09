@@ -103,7 +103,7 @@ class ParkingController extends Controller
             });
         }
 
-        return redirect()->with('success', 'Vehicle successfully parked!');
+        return redirect()->back()->with('success', 'Vehicle successfully parked!');
     }
 
     public function unpack($parkingNumber)
@@ -120,14 +120,14 @@ class ParkingController extends Controller
             $parking_spot->save();
         });
 
-        return redirect()->with('success', 'Vehicle successfully un parked!');
+        return redirect()->back()->with('success', 'Vehicle successfully un parked!');
     }
 
     public function createParkingRecord($vehicle_type, $current_parking_slot)
     {
         $parking = new Parking();
 
-        $parking->parking_number = Uuid::generate()->string;
+        $parking->parking_number = Uuid::uuid4();
         $parking->vehicle_id = $vehicle_type->id;
         $parking->parking_spot_id = $current_parking_slot->id;
 

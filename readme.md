@@ -18,4 +18,5 @@ following block:
     DB_USERNAME=homestead
     DB_PASSWORD=secret
 
-6. Access the functionality from the browser and test other APIS manually.
+6. Access the functionality from the browser and test other APIS manually. The apis are located in the routes/api.php
+ file

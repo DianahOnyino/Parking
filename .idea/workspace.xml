@@ -28,8 +28,8 @@
         <entry file="file://$PROJECT_DIR$/readme.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="262">
-                <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+              <first_editor relative-caret-position="469">
+                <caret line="21" column="5" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
               </first_editor>
               <second_editor />
             </state>
@@ -386,12 +386,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1557380567248</updated>
-      <workItem from="1557380570863" duration="28200000" />
+      <workItem from="1557380570863" duration="28294000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="28200000" />
+    <option name="totallyTimeSpent" value="28294000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
@@ -399,12 +399,12 @@
     <layout>
       <window_info id="npm" side_tool="true" />
       <window_info id="Favorites" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.12026862" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12026862" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" />
       <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="Terminal" visible="true" weight="0.35306123" />
+      <window_info active="true" anchor="bottom" id="Terminal" visible="true" weight="0.35306123" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
@@ -776,8 +776,8 @@
     <entry file="file://$PROJECT_DIR$/readme.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="262">
-            <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+          <first_editor relative-caret-position="469">
+            <caret line="21" column="5" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
           </first_editor>
           <second_editor />
         </state>

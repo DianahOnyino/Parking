@@ -9,10 +9,19 @@
 namespace App\Http\Controllers;
 
 
+use App\Supermarket;
+
 class StockTrackingController extends Controller
 {
     public function index()
     {
-        return view('stock.display');
+        $supermarkets = Supermarket::all();
+
+        return view('stock.display', compact('supermarkets'));
+    }
+
+    public function sellItem($itemId, $supermarketId, $quantity)
+    {
+//        $supermarket_item =
     }
 }

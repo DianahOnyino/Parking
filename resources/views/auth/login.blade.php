@@ -73,7 +73,7 @@
                     <div>
                         <img src="images/parking.jpeg" class="mb-5" width="150" alt="Logo">
                         <h2>{{ __('Sign up') }}</h2>
-                        <p>If you don't have account create one.</p>
+                        <p>Don't have account? Create one.</p>
                         <a class="btn btn-primary active mt-2" href="{{ route('register') }}">{{ __('Register Now!') }}</a>
                     </div>
                 </div>

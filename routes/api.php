@@ -16,3 +16,6 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/all-available-parking-spots', 'ParkingController@getAllAvailablePrakingSpots')
+    ->name('available-parking-spots');

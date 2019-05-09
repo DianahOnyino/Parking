@@ -17,6 +17,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+//Parking Routes
 Route::get('/all-available-parking-spots', 'ParkingController@getAllAvailableParkingSpots')
     ->name('available-parking-spots');
 
@@ -30,3 +31,10 @@ Route::get('/park/{parkingLotStartNo}', 'ParkingController@park')
      ->name('park');
 
 Route::get('/unpark/{parking_number}', 'ParkingController@unpark')->name('unpark');
+
+//Stock tracking routes
+Route::get('/sell-item/{item_id}/{supermarket_id}/{quantity}', 'StockTrackingController@sellItem')->name('sell-item');
+
+Route::get('/sell-item/{item_id}/{supermarket_id}/{quantity}', 'StockTrackingController@sellItem')->name('sell-item');
+
+//Route::get('/sell-item/{item_id}/{supermarket_id}/{quantity}', 'StockTrackingController@sellItem')->name('sell-item');

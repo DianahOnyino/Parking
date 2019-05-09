@@ -21,4 +21,7 @@ Route::get('/all-available-parking-spots', 'ParkingController@getAllAvailablePar
     ->name('available-parking-spots');
 
 Route::get('/next-available-parking-spot/{vehicle_type}', 'ParkingController@getNextAvailableParkingSpot')
-     ->name('available-parking-spots');
+     ->name('next-available-parking-spot');
+
+Route::get('/available-parking-spot-with-lowest-number', 'ParkingController@getAvailableParkingSpotWithLowestNumber')
+     ->name('available-parking-spot-with-lowest-number');

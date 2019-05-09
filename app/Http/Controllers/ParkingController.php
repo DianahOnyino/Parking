@@ -57,4 +57,9 @@ class ParkingController extends Controller
 
         return $next_available_parking_slot;
     }
+
+    public function getAvailableParkingSpotWithLowestNumber()
+    {
+        return ParkingSpot::where('occupied', 0)->orderBY('number', 'ASC')->first();
+    }
 }

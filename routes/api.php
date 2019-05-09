@@ -19,3 +19,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('/all-available-parking-spots', 'ParkingController@getAllAvailableParkingSpots')
     ->name('available-parking-spots');
+
+Route::get('/next-available-parking-spot/{vehicle_type}', 'ParkingController@getNextAvailableParkingSpot')
+     ->name('available-parking-spots');

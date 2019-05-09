@@ -9,6 +9,8 @@
 namespace App\Http\Controllers;
 
 
+use App\ParkingSpot;
+
 class ParkingController extends Controller
 {
     public function index()
@@ -16,8 +18,8 @@ class ParkingController extends Controller
         return view('parking.display');
     }
 
-    public function getAllAvailablePrakingSpots()
+    public function getAllAvailableParkingSpots()
     {
-
+        return ParkingSpot::where('occupied', 0)->get();
     }
 }

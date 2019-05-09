@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container-fluid">
+    <div class="container-fluid" ng-controller="MainController">
         <div class="grid-x justify-content-center">
             <div class="cell large-12 medium-12 small-12">
                 <div class="card">
@@ -20,7 +20,34 @@
                     </div>
 
                     <div class="card-body">
+                        <table st-pipe="callServer" st-table="parking_records" class="table responsive table-scroll">
+                            <thead class="no_head_style">
+                            <tr>
+                                <th colspan="4">
+                                    <input st-search class="form-control" placeholder="Search ..." type="text"/>
+                                </th>
+                            </tr>
+                            </thead>
 
+                            <thead>
+                            <tr>
+                                <td></td>
+                                <td>Parking Number</td>
+                                <td>Occupied</td>
+                            </tr>
+                            </thead>
+
+                            <tbody ng-show="!isLoading">
+                            <tr ng-if="parking_records.length != 0"
+                                ng-repeat="parking_record in parking_records track by $index" ng-cloak>
+                                <td><% $index+1 %></td>
+                                <td><% parking_record.number %></td>
+                                <td><% parking_record.occupied %></td>
+                            </tr>
+                            </tbody>
+
+
+                        </table>
                     </div>
                 </div>
             </div>

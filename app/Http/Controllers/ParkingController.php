@@ -12,7 +12,6 @@ namespace App\Http\Controllers;
 use App\ParkingSpot;
 use App\Providers\Parking;
 use App\Vehicle;
-use http\Env\Request;
 use Illuminate\Support\Facades\Input;
 use Ramsey\Uuid\Uuid;
 

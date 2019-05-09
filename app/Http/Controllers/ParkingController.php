@@ -44,7 +44,7 @@ class ParkingController extends Controller
             $next_available_parking_slot = $current_parking_slot;
         } elseif ($vehicle_type_slug == 'bus') {
             $current_parking_slot = ParkingSpot::where('occupied', 0)->orderBY('number', 'ASC')
-                                                                     ->pluck('number', 'id')->take(3)->toArray();
+                                                                     ->pluck('number')->take(3)->toArray();
 
             $third_slot = ParkingSpot::where('number', max($current_parking_slot))->first();
 
@@ -87,9 +87,9 @@ class ParkingController extends Controller
             $current_parking_slot = ParkingSpot::where('number', '>=', $parkingLotStartNo)->orderBY('number', 'ASC')
                                                ->take(3)->get();
 
-            $current_parking_slot->each(function ($parking_slot) use ($vehicle_type, $current_parking_slot) {
-                $this->createParkingRecord($vehicle_type, $current_parking_slot);
-                $this->markParkingSpaceAsOccupied($current_parking_slot);
+            $current_parking_slot->each(function ($parking_slot) use ($vehicle_type) {
+                $this->createParkingRecord($vehicle_type, $parking_slot);
+                $this->markParkingSpaceAsOccupied($parking_slot);
             });
         } else {
             $current_parking_slot = ParkingSpot::where('number', '>=', $parkingLotStartNo)->orderBY('number', 'ASC')

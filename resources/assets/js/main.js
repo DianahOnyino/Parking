@@ -48,6 +48,7 @@ app.factory('ParkingRecords', ['$http', 'FilteredTableState', function ($http, F
 
 app.controller('MainController', ['$http', '$scope', '$window', 'ParkingRecords', function ($http, $scope, $window, ParkingRecords) {
     $scope.parking_records = [];
+    // $scope.next_available_spot = "";
 
     $scope.itemsByPage = 20;
 
@@ -73,4 +74,12 @@ app.controller('MainController', ['$http', '$scope', '$window', 'ParkingRecords'
         });
     };
 
+    $scope.displayNextAvailableParkingSpots = function (vehicle_type) {
+        $http.get('api/next-available-parking-spot/' + vehicle_type)
+            .then(function (result) {
+                $scope.next_available_spot = result;
+            })
+    };
+
+    // $scope.watch($scope.next_available_spot)
 }]);

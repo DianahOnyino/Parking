@@ -3,12 +3,12 @@
         <ul class="nav">
             <li class="nav-item">
                 <a class="nav-link active" href="">
-                    <i class="fa fa-child" aria-hidden="true"></i> &nbsp; First
+                    <i class="fa fa-car" aria-hidden="true"></i> &nbsp; Parking Spots
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="">
-                    <i class="fa fa-user" aria-hidden="true"></i> &nbsp; Second
+                    <i class="fa fa-car" aria-hidden="true"></i> &nbsp; Parking Records
                 </a>
             </li>
         </ul>

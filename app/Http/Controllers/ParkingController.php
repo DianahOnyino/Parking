@@ -37,27 +37,25 @@ class ParkingController extends Controller
             $current_parking_slot = ParkingSpot::where('occupied', 0)->orderBY('number', 'ASC')->first();
 
             $next_available_parking_slot = ParkingSpot::where('number', '>', $current_parking_slot->number)
-                                                      ->min('number')->first();
+                                                      ->min('number');
         } elseif($vehicle_type_slug == 'motorbike') {
             $current_parking_slot = ParkingSpot::where('occupied', 0)->orderBY('number', 'ASC')->first();
 
             $next_available_parking_slot = $current_parking_slot;
         } elseif ($vehicle_type_slug == 'bus') {
             $current_parking_slot = ParkingSpot::where('occupied', 0)->orderBY('number', 'ASC')
-                                                                     ->take(3)->pluck('number')->get()->toArray();
+                                                                     ->pluck('number', 'id')->take(3)->toArray();
 
             $third_slot = ParkingSpot::where('number', max($current_parking_slot))->first();
 
-            $next_available_parking_slot = ParkingSpot::where('number', '>', $third_slot->number)
-                                                      ->min('number')->first();
+            $next_available_parking_slot = ParkingSpot::where('number', '>', $third_slot->number)->min('number');
         } else {
             $current_parking_slot = ParkingSpot::where('occupied', 0)->orderBY('number', 'ASC')
-                                               ->take(5)->pluck('number')->get()->toArray();
+                                               ->pluck('number')->take(5)->toArray();
 
             $fifth_slot = ParkingSpot::where('number', max($current_parking_slot))->first();
 
-            $next_available_parking_slot = ParkingSpot::where('number', '>', $fifth_slot->number)
-                                                      ->min('number')->first();
+            $next_available_parking_slot = ParkingSpot::where('number', '>', $fifth_slot->number)->min('number');
         }
 
         return $next_available_parking_slot;
